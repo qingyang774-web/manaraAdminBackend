@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/manara-admin';
+const MONGODB_URI = 'mongodb+srv://manaraAdminDatabase:manaraAdminDatabase@manaraadmin.wdc1bem.mongodb.net/?appName=manaraAdmin' || 'mongodb://localhost:27017/manara-admin';
 
 export const connectDB = async () => {
   if (!MONGODB_URI) {
