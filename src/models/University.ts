@@ -71,9 +71,11 @@ const universitySchema = new Schema(
 universitySchema.set('toJSON', {
   virtuals: true,
   versionKey: false,
-  transform: (_doc, ret) => {
-    ret.id = ret._id.toString();
-    delete ret._id;
+  transform: (_doc, ret: Record<string, any>) => {
+    if (ret._id) {
+      ret.id = ret._id.toString();
+      delete ret._id;
+    }
     return ret;
   }
 });

@@ -1,16 +1,13 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = 'mongodb://localhost:27017/manara-admin';
+const DEFAULT_URI = 'mongodb://localhost:27017/manara-admin';
 
 export const connectDB = async () => {
-  if (!MONGODB_URI) {
-    throw new Error('MONGODB_URI is not defined');
-  }
+  const uri = process.env.MONGODB_URI ?? DEFAULT_URI;
 
-  await mongoose.connect(MONGODB_URI, {
+  await mongoose.connect(uri, {
     autoIndex: true
   });
 
   console.log('Connected to MongoDB');
 };
-
